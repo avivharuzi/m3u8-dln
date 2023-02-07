@@ -1,24 +1,22 @@
-import * as fs from 'node:fs';
 import * as http from 'node:http';
 
-export interface DownloadFileOptions {
+export interface UrlContentOptions {
   headers: http.OutgoingHttpHeaders;
 }
 
-export const getDefaultDownloadFileOptions = (): DownloadFileOptions => {
+export const getDefaultUrlContentOptions = (): UrlContentOptions => {
   return {
     headers: {},
   };
 };
 
-const downloadFile = async (
+export const getUrlContent = async (
   url: string,
-  targetFilePath: string,
-  partialOptions: Partial<DownloadFileOptions>
-): Promise<void> => {
+  partialOptions: Partial<UrlContentOptions>
+): Promise<string> => {
   return new Promise((resolve, reject) => {
-    const { headers }: DownloadFileOptions = {
-      ...getDefaultDownloadFileOptions(),
+    const { headers }: UrlContentOptions = {
+      ...getDefaultUrlContentOptions(),
       ...partialOptions,
     };
 
@@ -34,12 +32,14 @@ const downloadFile = async (
           );
         }
 
-        // Start download to the target file path.
-        response.pipe(fs.createWriteStream(targetFilePath));
+        let data = '';
+
+        response.on('data', (chunk) => {
+          data += chunk;
+        });
 
         response.on('end', () => {
-          // File downloaded successfully.
-          resolve();
+          resolve(data);
         });
       }
     );

@@ -12,6 +12,8 @@ export * from './generate-uuid';
 
 export * from './get-file-content';
 
+export * from './get-url-content';
+
 export * from './is-dir-exists';
 
 export * from './is-url';
