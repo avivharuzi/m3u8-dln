@@ -31,29 +31,31 @@
 
 ✅ Support headers and cookies in case of authentication
 
-✅ Can download from m3u8 playlist and all his videos inside
+✅ Can download from m3u8 master playlist and all his videos inside
 
-✅ Can 
+✅ Can merge video and audio together (works only if the m3u8 master playlist was provided)
 
 ✅ Using multi processing
 
-
-
 ## 🎯 Prerequisites
 
-- Node
+- [ffmpeg](https://ffmpeg.org)
 
 ## 🛠️ Installation
 
-Using in NodeJS script:
+Using via code (for CLI no need to install locally).
 
-```sh
-npm i 
+```
+npm i m3u8-dln
 ```
 
 ## ⚡️ Usage
 
+Using via CLI.
 
+```sh
+npx m3u8-dln
+```
 
 ## 📜 License
 
