@@ -12,7 +12,7 @@ export const getDefaultUrlContentOptions = (): UrlContentOptions => {
 
 export const getUrlContent = async (
   url: string,
-  partialOptions: Partial<UrlContentOptions>
+  partialOptions: Partial<UrlContentOptions> = {}
 ): Promise<string> => {
   return new Promise((resolve, reject) => {
     const { headers }: UrlContentOptions = {
