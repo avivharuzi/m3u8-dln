@@ -19,11 +19,11 @@
 - [Prerequisites](#🎯-Prerequisites)
 - [Installation](#🛠️-Installation)
 - [Usage](#⚡️-Usage)
-- [Commands](#🕹-Commands)
-- [FAQs](#❓-FAQs)
 - [License](#📜-License)
 
 ## ✨ Features
+
+✅ Vey fast 🏎️
 
 ✅ Can be used via CLI or in code
 
@@ -31,15 +31,17 @@
 
 ✅ Support headers and cookies in case of authentication
 
-✅ Can download from m3u8 master playlist and all his videos inside
+✅ Can download from m3u8 master playlist and all his videos inside or specfic one
 
 ✅ Can merge video and audio together (works only if the m3u8 master playlist was provided)
+
+✅ Can download from multi URL's
 
 ✅ Using multi processing
 
 ## 🎯 Prerequisites
 
-- [ffmpeg](https://ffmpeg.org)
+- [ffmpeg](https://ffmpeg.org) (ffmpeg will be used as the last step to create the mp4 file)
 
 ## 🛠️ Installation
 
