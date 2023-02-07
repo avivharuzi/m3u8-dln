@@ -3,6 +3,7 @@
   <p>A complete m3u8 downloader 📺</p>
   <p>An npm package and CLI tool to download M3U8/HLS streams and merge all the chunks to a MP4 video.</p>
   <p>    
+    <img alt="NPM" src="https://img.shields.io/npm/v/m3u8-dln?style=for-the-badge">
     <img alt="GitHub" src="https://img.shields.io/github/license/avivharuzi/m3u8-dln?style=for-the-badge">
   </p>
   <p>
