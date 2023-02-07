@@ -37,7 +37,7 @@
 
 ✅ Can merge video and audio together (works only if the m3u8 master playlist was provided)
 
-✅ Can download from multi URL's
+✅ Can download from multi URLs
 
 ✅ Using multi processing
 

@@ -1,0 +1,63 @@
+{
+  "name": "m3u8-dln",
+  "version": "0.0.0",
+  "description": "A complete m3u8 downloader 📺",
+  "keywords": [
+    "nodejs",
+    "m3u8",
+    "hls",
+    "download",
+    "downloader",
+    "video",
+    "audio",
+    "stream"
+  ],
+  "homepage": "https://github.com/avivharuzi/m3u8-dln#readme",
+  "bugs": {
+    "url": "https://github.com/avivharuzi/m3u8-dln/issues",
+    "email": "avivharuzi@gmail.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Aviv Haruzi",
+    "email": "avivharuzi@gmail.com",
+    "url": "https://www.avivharuzi.com"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "main": "./lib/cjs/index.js",
+  "bin": {
+    "m3u8-dln": "./lib/cjs/cli.js"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
+  "types": "./lib/cjs/types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avivharuzi/m3u8-dln.git"
+  },
+  "scripts": {
+    "clean": "rm -rf ./lib",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
+    "build:cjs": "tsc -p tsconfig.cjs.json"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "@types/node": "^18.13.0",
+    "prettier": "^2.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  }
+}
