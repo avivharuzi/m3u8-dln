@@ -1,6 +1,7 @@
 <div align="center">
   <h1>m3u8-dln</h1>
   <p>A complete m3u8 downloader 📺</p>
+  <p>An npm package and CLI tool to download M3U8/HLS streams and merge all the chunks to a MP4 video.</p>
   <p>
     <img alt="GitHub" src="https://img.shields.io/github/license/avivharuzi/m3u8-dln?style=for-the-badge">
   </p>
@@ -38,6 +39,8 @@
 ✅ Can download from multi URL's
 
 ✅ Using multi processing
+
+✅ Preserve original quality (without encoding)
 
 ## 🎯 Prerequisites
 
