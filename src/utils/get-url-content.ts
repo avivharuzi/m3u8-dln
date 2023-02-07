@@ -1,4 +1,6 @@
 import * as http from 'node:http';
+import * as https from 'node:https';
+import * as nodeUrl from 'node:url';
 
 export interface UrlContentOptions {
   headers: http.OutgoingHttpHeaders;
@@ -20,7 +22,10 @@ export const getUrlContent = async (
       ...partialOptions,
     };
 
-    const request = http.get(
+    const parsedUrl = nodeUrl.parse(url);
+    const httpModule = parsedUrl.protocol === 'https:' ? https : http;
+
+    const request = httpModule.get(
       url,
       {
         headers,
