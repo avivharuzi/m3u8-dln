@@ -17,11 +17,11 @@
 
 ## 📖 Table of Contents
 
-- [Features](#✨-Features)
-- [Prerequisites](#🎯-Prerequisites)
-- [Installation](#🛠️-Installation)
-- [Usage](#⚡️-Usage)
-- [License](#📜-License)
+- [Features](#-Features)
+- [Prerequisites](#-Prerequisites)
+- [Installation](#-Installation)
+- [Usage](#-Usage)
+- [License](#-License)
 
 ## ✨ Features
 
