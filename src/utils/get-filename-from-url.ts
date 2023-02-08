@@ -7,5 +7,13 @@ export const getFilenameFromUrl = (url: string): string => {
     throw new Error(`Couldn't find path from url, url: ${url}`);
   }
 
-  return pathname.split('/').at(-1);
+  const fileName = pathname.split('/').at(-1);
+
+  if (!fileName) {
+    throw new Error(
+      `There was a problem to find fileName from url, url: ${url}`
+    );
+  }
+
+  return fileName;
 };
