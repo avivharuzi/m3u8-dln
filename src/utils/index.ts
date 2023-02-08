@@ -27,3 +27,5 @@ export * from './is-dir-exists';
 export * from './is-url';
 
 export * from './m3u8-to-mp4';
+
+export * from './parse-m3u8-url';
