@@ -3,7 +3,7 @@ import * as path from 'node:path';
 import { buildNewUrl } from './build-new-url';
 import { getFilenameFromUrl } from './get-filename-from-url';
 import { getRelativeUrl } from './get-relative-url';
-import { getUrlContent } from './get-url-content';
+import { getUrlContent, UrlContentOptions } from './get-url-content';
 
 export enum M3U8DirectiveKey {
   EXTM3U = '#EXTM3U', // File header, must be the first line of the file.
@@ -70,6 +70,7 @@ export interface M3U8StreamSegment {
 }
 
 export interface ParseM3U8UrlOptions {
+  urlContentOptions: Partial<UrlContentOptions>;
   targetDir: string;
 }
 
@@ -193,7 +194,7 @@ export const parseM3U8Url = async (
   };
 
   // Get file content.
-  const content = await getUrlContent(url);
+  const content = await getUrlContent(url, options.urlContentOptions);
 
   // Split all the lines.
   const lines = content
