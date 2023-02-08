@@ -5,11 +5,11 @@ export const isDirExists = async (dir: string): Promise<boolean> => {
     const stat = await fs.promises.stat(dir);
 
     return stat.isDirectory();
-  } catch (err: any) {
-    if (err.code === 'ENOENT') {
+  } catch (error: any) {
+    if (error.code === 'ENOENT') {
       return false;
     } else {
-      throw err;
+      throw error;
     }
   }
 };
