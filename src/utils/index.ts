@@ -10,6 +10,8 @@ export * from './download-file';
 
 export * from './download-file-batch';
 
+export * from './download-m3u8-file-with-segments';
+
 export * from './exec-command';
 
 export * from './generate-uuid';
