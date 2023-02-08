@@ -13,7 +13,7 @@ export const getDefaultDownloadFileOptions = (): DownloadFileOptions => {
   };
 };
 
-const downloadFile = async (
+export const downloadFile = async (
   url: string,
   targetFilePath: string,
   partialOptions: Partial<DownloadFileOptions>

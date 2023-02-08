@@ -10,5 +10,6 @@
     "declarationMap": true,
     "allowSyntheticDefaultImports": true
   },
-  "files": ["src/index.ts", "src/cli.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
