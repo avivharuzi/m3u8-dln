@@ -66,6 +66,7 @@ export interface M3U8VideoStreamResolution {
 
 export interface M3U8StreamSegment {
   url: string;
+  fileName: string;
   filePath: string;
 }
 
@@ -246,6 +247,7 @@ export const parseM3U8Url = async (
 
         streamSegments.push({
           url,
+          fileName,
           filePath,
         });
 
