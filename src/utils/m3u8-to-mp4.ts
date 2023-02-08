@@ -5,7 +5,7 @@ export interface M3U8ToMP4Input {
   audioFilePath?: string;
 }
 
-export const M3U8ToMP4 = async (
+export const m3u8ToMP4 = async (
   { videoFilePath, audioFilePath }: M3U8ToMP4Input,
   outputFilePath: string
 ): Promise<void> => {
