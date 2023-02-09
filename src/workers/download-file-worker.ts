@@ -1,8 +1,12 @@
-import { downloadFile, DownloadFileOptions } from '../utils';
+import {
+  ChildProcessMessage,
+  downloadFile,
+  DownloadFileOptions,
+} from '../utils';
 
-export interface DownloadFileWorkerArgs {
+interface DownloadFileWorkerArgs {
   url: string;
-  targetFilePath: string;
+  filePath: string;
   partialOptions: Partial<DownloadFileOptions>;
 }
 
@@ -10,7 +14,7 @@ process.on(
   'message',
   async ({
     url,
-    targetFilePath,
+    filePath,
     partialOptions,
   }: DownloadFileWorkerArgs): Promise<void> => {
     if (!process.send) {
@@ -18,10 +22,10 @@ process.on(
     }
 
     try {
-      await downloadFile(url, targetFilePath, partialOptions);
-      process.send({ status: 'success' });
+      await downloadFile(url, filePath, partialOptions);
+      process.send({ status: 'success' } as ChildProcessMessage);
     } catch (error) {
-      process.send({ status: 'error', error });
+      process.send({ status: 'error', error } as ChildProcessMessage);
     }
   }
 );

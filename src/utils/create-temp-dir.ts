@@ -4,7 +4,7 @@ import * as path from 'node:path';
 
 import { generateUUID } from './generate-uuid';
 
-export const createTempDir = (): Promise<string> =>
+export const createTempDir = (prefix: string): Promise<string> =>
   fs.promises.mkdtemp(
-    path.join(os.tmpdir(), `m3u8-dln-temp-${generateUUID()}-`)
+    path.join(os.tmpdir(), `${prefix}-temp-${generateUUID()}-`)
   );

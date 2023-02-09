@@ -1,9 +1,9 @@
 import * as path from 'node:path';
 
-import { buildNewUrl } from './build-new-url';
-import { getFilenameFromUrl } from './get-filename-from-url';
-import { getRelativeUrl } from './get-relative-url';
-import { getUrlContent, UrlContentOptions } from './get-url-content';
+import { buildNewURL } from './build-new-url';
+import { getFileNameFromURL } from './get-filename-from-url';
+import { getRelativeURL } from './get-relative-url';
+import { getURLContent, UrlContentOptions } from './get-url-content';
 
 export enum M3U8DirectiveKey {
   EXTM3U = '#EXTM3U', // File header, must be the first line of the file.
@@ -77,7 +77,7 @@ export interface ParseM3U8UrlOptions {
 
 export interface ParseM3U8UrlResponse {
   videoStreams: M3U8VideoStream[];
-  audioStreams: Record<string, M3U8AudioStream>;
+  audioStreams: Record<string, M3U8AudioStream>; // In order to avoid duplicates of audios we will make a dictionary of the streams.
   m3u8: ParseM3U8UrlResponseM3U8 | null;
 }
 
@@ -138,7 +138,7 @@ export const extractM3U8DirectiveAttributesRecord = <T>(
 
 export const extractM3U8AudioStream = (
   audioStreamId: string,
-  relativeUrl: string,
+  relativeURL: string,
   directivesRecord: Record<M3U8DirectiveKey, M3U8Directive | M3U8Directive[]>
 ): M3U8AudioStream | null => {
   let mediaDirectives = directivesRecord[M3U8DirectiveKey.EXT_X_MEDIA] as
@@ -170,8 +170,8 @@ export const extractM3U8AudioStream = (
       continue;
     }
 
-    const url = buildNewUrl(relativeUrl, uri);
-    const fileName = getFilenameFromUrl(url);
+    const url = buildNewURL(relativeURL, uri);
+    const fileName = getFileNameFromURL(url);
 
     return {
       id,
@@ -195,7 +195,7 @@ export const parseM3U8Url = async (
   };
 
   // Get file content.
-  const content = await getUrlContent(url, options.urlContentOptions);
+  const content = await getURLContent(url, options.urlContentOptions);
 
   // Split all the lines.
   const lines = content
@@ -203,7 +203,7 @@ export const parseM3U8Url = async (
     .map((line) => line.trim())
     .filter((line) => line !== '');
 
-  // Check we have at least one line.
+  // Check if we have at least one line.
   if (lines.length === 0) {
     throw new Error('M3U8 file content is empty');
   }
@@ -217,7 +217,7 @@ export const parseM3U8Url = async (
   // Check is m3u8 file has required header.
   if (!directivesRecord[M3U8DirectiveKey.EXTM3U]) {
     throw new Error(
-      `M3U8 file is invalid, the first line of the file must be have ${M3U8DirectiveKey.EXTM3U}`
+      `M3U8 file is invalid, the first line of the file must have: ${M3U8DirectiveKey.EXTM3U}`
     );
   }
 
@@ -228,10 +228,10 @@ export const parseM3U8Url = async (
   // Check if m3u8 is vod.
   const isVOD = playlistType?.value === M3U8DirectivePlaylistType.VOD;
 
-  const relativeUrl = getRelativeUrl(url);
+  const relativeURL = getRelativeURL(url);
 
   if (isVOD) {
-    // Collect the videos to download.
+    // Collect the segments to download.
     const streamSegments: M3U8StreamSegment[] = [];
 
     // New m3u8 stream file content.
@@ -241,8 +241,8 @@ export const parseM3U8Url = async (
           return line;
         }
 
-        const url = buildNewUrl(relativeUrl, line);
-        const fileName = getFilenameFromUrl(url);
+        const url = buildNewURL(relativeURL, line);
+        const fileName = getFileNameFromURL(url);
         const filePath = path.join(options.targetDir, fileName);
 
         streamSegments.push({
@@ -308,8 +308,8 @@ export const parseM3U8Url = async (
         throw new Error('Not found stream directive');
       }
 
-      const videoStreamUrl = buildNewUrl(relativeUrl, streamDirectivesValue);
-      const fileName = getFilenameFromUrl(videoStreamUrl);
+      const videoStreamURL = buildNewURL(relativeURL, streamDirectivesValue);
+      const fileName = getFileNameFromURL(videoStreamURL);
 
       const resolutionAttribute =
         streamDirective.attributes[M3U8DirectiveStreamInfAttribute.RESOLUTION];
@@ -336,7 +336,7 @@ export const parseM3U8Url = async (
       if (audioStreamId && !audioStreams[audioStreamId]) {
         const audioStream = extractM3U8AudioStream(
           audioStreamId,
-          relativeUrl,
+          relativeURL,
           directivesRecord
         );
 
@@ -346,7 +346,7 @@ export const parseM3U8Url = async (
       }
 
       videoStreams.push({
-        url: videoStreamUrl,
+        url: videoStreamURL,
         fileName,
         resolution: {
           width,

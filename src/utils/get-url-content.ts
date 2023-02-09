@@ -1,6 +1,8 @@
 import * as http from 'node:http';
 import * as https from 'node:https';
-import * as nodeUrl from 'node:url';
+import * as nodeURL from 'node:url';
+
+import { mergeOptions } from './merge-options';
 
 export interface UrlContentOptions {
   headers: http.OutgoingHttpHeaders;
@@ -12,18 +14,18 @@ export const getDefaultUrlContentOptions = (): UrlContentOptions => {
   };
 };
 
-export const getUrlContent = async (
+export const getURLContent = async (
   url: string,
   partialOptions: Partial<UrlContentOptions> = {}
 ): Promise<string> => {
   return new Promise((resolve, reject) => {
-    const { headers }: UrlContentOptions = {
-      ...getDefaultUrlContentOptions(),
-      ...partialOptions,
-    };
+    const { headers } = mergeOptions(
+      getDefaultUrlContentOptions(),
+      partialOptions
+    );
 
-    const parsedUrl = nodeUrl.parse(url);
-    const httpModule = parsedUrl.protocol === 'https:' ? https : http;
+    const parsedURL = nodeURL.parse(url);
+    const httpModule = parsedURL.protocol === 'https:' ? https : http;
 
     const request = httpModule.get(
       url,
