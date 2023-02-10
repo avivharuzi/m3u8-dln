@@ -47,3 +47,11 @@ export const downloadAndConvertM3U8 = async ({
     audioMetadataId,
   };
 };
+
+export const extractOutputFilePathsFromDownloadAndConvertM3U8Outputs = (
+  outputs: DownloadAndConvertM3U8Output[]
+): string[] => {
+  return outputs
+    .filter((output) => output.outputFilePath)
+    .map((output) => output.outputFilePath as string);
+};

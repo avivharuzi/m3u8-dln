@@ -2,6 +2,8 @@ export * from './build-new-url';
 
 export * from './chunck-array';
 
+export * from './convert-to-download-and-convert-m3u8-inputs';
+
 export * from './create-dir';
 
 export * from './create-temp-dir';
