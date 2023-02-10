@@ -1,7 +1,5 @@
 export * from './build-new-url';
 
-export * from './child-process-message';
-
 export * from './chunck-array';
 
 export * from './create-dir';
