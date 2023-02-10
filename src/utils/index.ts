@@ -24,6 +24,8 @@ export * from './download-m3u8-file-with-segments';
 
 export * from './exec-command';
 
+export * from './filter-m3u8-video-streams';
+
 export * from './generate-uuid';
 
 export * from './get-file-content';

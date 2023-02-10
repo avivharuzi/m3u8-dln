@@ -7,6 +7,7 @@ import {
   deleteDir,
   downloadAndConvertM3U8Batch,
   extractOutputFilePathsFromDownloadAndConvertM3U8Outputs,
+  filterM3U8VideoStreamsOptions,
   getM3U8DownloadMetadata,
   mergeOptions,
   parseM3U8Url,
@@ -17,6 +18,7 @@ export interface M3U8DLNOptions {
   httpHeaders: http.IncomingHttpHeaders; // HTTP headers that can be pass to the http calls.
   segmentBatch: number; // The number of segment files to download at the same time.
   streamBatch: number; // The number of streams to download at the same time.
+  streamSelection: filterM3U8VideoStreamsOptions; // Choose what streams to download.
 }
 
 export interface M3U8DLNResponse {
@@ -28,6 +30,9 @@ export const getDefaultM3U8DLNOptions = (): M3U8DLNOptions => {
     httpHeaders: {},
     segmentBatch: 8,
     streamBatch: 4,
+    streamSelection: {
+      strategy: 'highest-resolution',
+    },
   };
 };
 
@@ -41,10 +46,8 @@ export const m3u8DLN = async (
   let workingDir = '';
 
   try {
-    const { httpHeaders, segmentBatch, streamBatch } = mergeOptions(
-      getDefaultM3U8DLNOptions(),
-      partialOptions
-    );
+    const { httpHeaders, segmentBatch, streamBatch, streamSelection } =
+      mergeOptions(getDefaultM3U8DLNOptions(), partialOptions);
 
     // Create working directory for the temporary m3u8 and segments files.
     workingDir = await createTempDir('m3u8-dln');
@@ -63,6 +66,7 @@ export const m3u8DLN = async (
     const metadata = await getM3U8DownloadMetadata(m3u8Parsed, {
       outputPath,
       parseM3U8UrlOptions,
+      filterVideoStreamsOptions: streamSelection,
     });
 
     // Create default options for download and convert m3u8.

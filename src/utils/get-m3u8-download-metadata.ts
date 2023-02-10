@@ -1,6 +1,10 @@
 import * as path from 'node:path';
 
 import { createDir } from './create-dir';
+import {
+  filterM3U8VideoStreams,
+  filterM3U8VideoStreamsOptions,
+} from './filter-m3u8-video-streams';
 import { generateUUID } from './generate-uuid';
 import {
   M3U8AudioStream,
@@ -27,6 +31,7 @@ export interface M3U8DownloadMetadataStream {
 export interface M3U8DownloadMetadataOptions {
   outputPath: string;
   parseM3U8UrlOptions: ParseM3U8UrlOptions;
+  filterVideoStreamsOptions: filterM3U8VideoStreamsOptions;
 }
 
 export const getM3U8DownloadMetadataAudio = async (
@@ -123,7 +128,11 @@ export const getM3U8DownloadMetadataVideos = (
  */
 export const getM3U8DownloadMetadata = async (
   parsedResponse: ParseM3U8UrlResponse,
-  { outputPath, parseM3U8UrlOptions }: M3U8DownloadMetadataOptions
+  {
+    outputPath,
+    parseM3U8UrlOptions,
+    filterVideoStreamsOptions,
+  }: M3U8DownloadMetadataOptions
 ): Promise<M3U8DownloadMetadata> => {
   let metadata: M3U8DownloadMetadata = {
     audios: {},
@@ -162,6 +171,7 @@ export const getM3U8DownloadMetadata = async (
           {
             outputPath,
             parseM3U8UrlOptions,
+            filterVideoStreamsOptions,
           }
         )
       );
@@ -173,10 +183,17 @@ export const getM3U8DownloadMetadata = async (
       });
     }
 
+    // Try to filter out videos before gathering metadata.
+    const videoStreams = filterM3U8VideoStreams(
+      parsedResponse.videoStreams,
+      filterVideoStreamsOptions
+    );
+
     const metadataVideos = await Promise.all(
-      getM3U8DownloadMetadataVideos(parsedResponse.videoStreams, {
+      getM3U8DownloadMetadataVideos(videoStreams, {
         outputPath,
         parseM3U8UrlOptions,
+        filterVideoStreamsOptions,
       })
     );
 
