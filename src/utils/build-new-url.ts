@@ -1,5 +1,15 @@
 import { isURL } from './is-url';
 
+/**
+ * Will build new url from exising url with uri.
+ *
+ * @example
+ *
+ * 'https://www.google.com/some-path', 'master.m3u8' -> 'https://www.google.com/some-path/master.m3u8'
+ * 'https://www.google.com/some-path', './master.m3u8' -> 'https://www.google.com/some-path/master.m3u8'
+ * 'https://www.google.com/some-path', '../master.m3u8' -> 'https://www.google.com/some-path/master.m3u8'
+ * 'https://www.google.com/some-path', '../../master.m3u8' -> 'https://www.google.com/master.m3u8'
+ */
 export const buildNewURL = (url: string, uri: string): string => {
   // Check if uri is already url itself.
   if (isURL(uri)) {
