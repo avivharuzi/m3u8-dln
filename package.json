@@ -1,6 +1,6 @@
 {
   "name": "m3u8-dln",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A complete m3u8 downloader 📺",
   "keywords": [
     "nodejs",
@@ -53,7 +53,8 @@
     "clean": "rm -rf ./dist",
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
-    "build:cjs": "tsc -p tsconfig.cjs.json"
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "release": "npm run build && npm publish"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
