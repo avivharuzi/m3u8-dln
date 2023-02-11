@@ -1,5 +1,5 @@
-import { chunkArray } from './chunck-array';
-import { downloadFile, DownloadFileOptions } from './download-file';
+import { chunkArray } from './chunck-array.js';
+import { downloadFile, DownloadFileOptions } from './download-file.js';
 
 export interface DownloadFileInfo {
   url: string;

@@ -1,4 +1,4 @@
-import * as nodeURL from 'node:url';
+import nodeURL from 'node:url';
 
 /**
  * Extract file name from URL.

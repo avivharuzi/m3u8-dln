@@ -1,4 +1,4 @@
-import { isURL } from './is-url';
+import { isURL } from './is-url.js';
 
 /**
  * Will build new url from exising url with uri.

@@ -1,7 +1,7 @@
-import { DownloadFileOptions } from './download-file';
-import { downloadM3U8FileWithSegments } from './download-m3u8-file-with-segments';
-import { M3U8DownloadMetadataStream } from './get-m3u8-download-metadata';
-import { m3u8ToMP4 } from './m3u8-to-mp4';
+import { DownloadFileOptions } from './download-file.js';
+import { downloadM3U8FileWithSegments } from './download-m3u8-file-with-segments.js';
+import { M3U8DownloadMetadataStream } from './get-m3u8-download-metadata.js';
+import { m3u8ToMP4 } from './m3u8-to-mp4.js';
 
 export interface DownloadAndConvertM3U8Input {
   metadata: M3U8DownloadMetadataStream;

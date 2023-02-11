@@ -1,4 +1,4 @@
-import { M3U8VideoStream } from './parse-m3u8-url';
+import { M3U8VideoStream } from './parse-m3u8-url.js';
 
 export type filterM3U8VideoStreamsStrategy =
   | 'all'

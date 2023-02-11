@@ -1,4 +1,4 @@
-import { execCommand } from './exec-command';
+import { execCommand } from './exec-command.js';
 
 export interface M3U8ToMP4Input {
   m3u8VideoFilePath: string;

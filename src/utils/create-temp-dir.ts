@@ -1,8 +1,8 @@
-import * as fs from 'node:fs';
-import * as os from 'node:os';
-import * as path from 'node:path';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 
-import { generateUUID } from './generate-uuid';
+import { generateUUID } from './generate-uuid.js';
 
 export const createTempDir = (prefix: string): Promise<string> =>
   fs.promises.mkdtemp(

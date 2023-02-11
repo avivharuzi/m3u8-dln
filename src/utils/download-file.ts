@@ -1,9 +1,9 @@
-import * as fs from 'node:fs';
-import * as http from 'node:http';
-import * as https from 'node:https';
-import * as nodeURL from 'node:url';
+import fs from 'node:fs';
+import http from 'node:http';
+import https from 'node:https';
+import nodeURL from 'node:url';
 
-import { mergeOptions } from './merge-options';
+import { mergeOptions } from './merge-options.js';
 
 export interface DownloadFileOptions {
   headers: http.OutgoingHttpHeaders;

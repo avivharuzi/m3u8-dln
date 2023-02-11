@@ -1,11 +1,11 @@
-import * as path from 'node:path';
+import path from 'node:path';
 
-import { createDir } from './create-dir';
+import { createDir } from './create-dir.js';
 import {
   filterM3U8VideoStreams,
   filterM3U8VideoStreamsOptions,
-} from './filter-m3u8-video-streams';
-import { generateUUID } from './generate-uuid';
+} from './filter-m3u8-video-streams.js';
+import { generateUUID } from './generate-uuid.js';
 import {
   M3U8AudioStream,
   M3U8VideoStream,
@@ -13,7 +13,7 @@ import {
   ParseM3U8UrlOptions,
   ParseM3U8UrlResponse,
   ParseM3U8UrlResponseM3U8,
-} from './parse-m3u8-url';
+} from './parse-m3u8-url.js';
 
 export interface M3U8DownloadMetadata {
   audios: Record<string, M3U8DownloadMetadataStream>;

@@ -1,6 +1,6 @@
-import * as fs from 'node:fs';
+import fs from 'node:fs';
 
-import { isDirExists } from './is-dir-exists';
+import { isDirExists } from './is-dir-exists.js';
 
 export const deleteDir = async (path: string): Promise<void> => {
   if (!path || !(await isDirExists(path))) {

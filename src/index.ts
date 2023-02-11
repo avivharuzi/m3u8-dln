@@ -1,4 +1,4 @@
-import * as http from 'node:http';
+import http from 'node:http';
 
 import {
   convertToDownloadAndConvertM3U8Inputs,
@@ -12,7 +12,7 @@ import {
   mergeOptions,
   parseM3U8Url,
   ParseM3U8UrlOptions,
-} from './utils';
+} from './utils/index.js';
 
 export interface M3U8DLNOptions {
   httpHeaders: http.IncomingHttpHeaders; // HTTP headers that can be pass to the http calls.

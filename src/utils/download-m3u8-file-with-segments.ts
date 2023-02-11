@@ -1,10 +1,10 @@
-import * as path from 'node:path';
+import path from 'node:path';
 
-import { createTextFile } from './create-text-file';
-import { DownloadFileOptions } from './download-file';
-import { downloadFileBatch, DownloadFileInfo } from './download-file-batch';
-import { generateUUID } from './generate-uuid';
-import { ParseM3U8UrlResponseM3U8 } from './parse-m3u8-url';
+import { createTextFile } from './create-text-file.js';
+import { downloadFileBatch, DownloadFileInfo } from './download-file-batch.js';
+import { DownloadFileOptions } from './download-file.js';
+import { generateUUID } from './generate-uuid.js';
+import { ParseM3U8UrlResponseM3U8 } from './parse-m3u8-url.js';
 
 export interface DownloadM3U8FileWithSegmentsOptions {
   workingDir: string;

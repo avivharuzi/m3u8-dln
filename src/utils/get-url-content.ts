@@ -1,8 +1,8 @@
-import * as http from 'node:http';
-import * as https from 'node:https';
-import * as nodeURL from 'node:url';
+import http from 'node:http';
+import https from 'node:https';
+import nodeURL from 'node:url';
 
-import { mergeOptions } from './merge-options';
+import { mergeOptions } from './merge-options.js';
 
 export interface UrlContentOptions {
   headers: http.OutgoingHttpHeaders;

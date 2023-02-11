@@ -1,7 +1,7 @@
-import * as http from 'node:http';
+import http from 'node:http';
 
-import { DownloadAndConvertM3U8Input } from './download-and-convert-m3u8';
-import { M3U8DownloadMetadataStream } from './get-m3u8-download-metadata';
+import { DownloadAndConvertM3U8Input } from './download-and-convert-m3u8.js';
+import { M3U8DownloadMetadataStream } from './get-m3u8-download-metadata.js';
 
 export interface ConvertToDownloadAndConvertM3U8InputsOptions {
   segmentBatch: number;

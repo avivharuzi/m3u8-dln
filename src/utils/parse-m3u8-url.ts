@@ -1,9 +1,9 @@
-import * as path from 'node:path';
+import path from 'node:path';
 
-import { buildNewURL } from './build-new-url';
-import { getFileNameFromURL } from './get-filename-from-url';
-import { getRelativeURL } from './get-relative-url';
-import { getURLContent, UrlContentOptions } from './get-url-content';
+import { buildNewURL } from './build-new-url.js';
+import { getFileNameFromURL } from './get-filename-from-url.js';
+import { getRelativeURL } from './get-relative-url.js';
+import { getURLContent, UrlContentOptions } from './get-url-content.js';
 
 export enum M3U8DirectiveKey {
   EXTM3U = '#EXTM3U', // File header, must be the first line of the file.

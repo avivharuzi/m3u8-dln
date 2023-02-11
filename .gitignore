@@ -36,6 +36,3 @@ testem.log
 .DS_Store
 Thumbs.db
 Footer
-
-# Library Files
-/lib

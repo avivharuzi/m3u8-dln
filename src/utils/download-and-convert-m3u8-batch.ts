@@ -1,9 +1,9 @@
-import { chunkArray } from './chunck-array';
+import { chunkArray } from './chunck-array.js';
 import {
   downloadAndConvertM3U8,
   DownloadAndConvertM3U8Input,
   DownloadAndConvertM3U8Output,
-} from './download-and-convert-m3u8';
+} from './download-and-convert-m3u8.js';
 
 export const downloadAndConvertM3U8Multi = (
   inputs: DownloadAndConvertM3U8Input[]
