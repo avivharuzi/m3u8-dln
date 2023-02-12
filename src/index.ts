@@ -7,7 +7,7 @@ import {
   deleteDir,
   downloadAndConvertM3U8Batch,
   extractOutputFilePathsFromDownloadAndConvertM3U8Outputs,
-  filterM3U8VideoStreamsOptions,
+  FilterM3U8VideoStreamsOptions,
   getM3U8DownloadMetadata,
   mergeOptions,
   parseM3U8Url,
@@ -18,7 +18,7 @@ export interface M3U8DLNOptions {
   httpHeaders: http.IncomingHttpHeaders; // HTTP headers that can be pass to the http calls.
   segmentBatch: number; // The number of segment files to download at the same time.
   streamBatch: number; // The number of streams to download at the same time.
-  streamSelection: filterM3U8VideoStreamsOptions; // Choose what streams to download.
+  streamSelection: FilterM3U8VideoStreamsOptions; // Choose what streams to download.
 }
 
 export interface M3U8DLNResponse {

@@ -3,7 +3,7 @@ import path from 'node:path';
 import { createDir } from './create-dir.js';
 import {
   filterM3U8VideoStreams,
-  filterM3U8VideoStreamsOptions,
+  FilterM3U8VideoStreamsOptions,
 } from './filter-m3u8-video-streams.js';
 import { generateUUID } from './generate-uuid.js';
 import {
@@ -31,7 +31,7 @@ export interface M3U8DownloadMetadataStream {
 export interface M3U8DownloadMetadataOptions {
   outputPath: string;
   parseM3U8UrlOptions: ParseM3U8UrlOptions;
-  filterVideoStreamsOptions: filterM3U8VideoStreamsOptions;
+  filterVideoStreamsOptions: FilterM3U8VideoStreamsOptions;
 }
 
 export const getM3U8DownloadMetadataAudio = async (

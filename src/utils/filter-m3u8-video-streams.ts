@@ -1,14 +1,14 @@
 import { M3U8VideoStream } from './parse-m3u8-url.js';
 
-export type filterM3U8VideoStreamsStrategy =
+export type FilterM3U8VideoStreamsStrategy =
   | 'all'
   | 'first-one'
   | 'last-one'
   | 'highest-bandwidth'
   | 'highest-resolution';
 
-export interface filterM3U8VideoStreamsOptions {
-  strategy: filterM3U8VideoStreamsStrategy;
+export interface FilterM3U8VideoStreamsOptions {
+  strategy: FilterM3U8VideoStreamsStrategy;
 }
 
 const findHighestBandwidth = (
@@ -33,7 +33,7 @@ const findHighestResolution = (
 
 export const filterM3U8VideoStreams = (
   videoStreams: M3U8VideoStream[],
-  { strategy }: filterM3U8VideoStreamsOptions
+  { strategy }: FilterM3U8VideoStreamsOptions
 ): M3U8VideoStream[] => {
   switch (strategy) {
     case 'all':
