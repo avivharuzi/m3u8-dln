@@ -74,6 +74,7 @@ const response = await m3u8DLN(
     segmentBatch: 8, // The number of segment files to download at the same time.
     streamBatch: 4, // The number of streams to download at the same time.
     streamSelection: {
+      // 'all' | 'first-one' | 'last-one' | 'highest-bandwidth' | 'highest-resolution'
       strategy: 'highest-resolution', // Choose what streams to download.
     },
   }
